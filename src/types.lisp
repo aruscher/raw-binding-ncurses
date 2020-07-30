@@ -1,6 +1,5 @@
 (in-package #:binding)
 
-(defctype window-ptr :pointer)
 (defctype screen-ptr :pointer)
 (defctype file-ptr :pointer)
 (defctype va_list :pointer)
@@ -58,3 +57,5 @@
   (yoffset ncurses_size_t)
   (bkgrnd (:pointer (:struct cchar_t)))
   (color :int))
+
+(defctype window-ptr (:pointer (:struct win_st)))
