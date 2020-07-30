@@ -10,5 +10,6 @@
   :components ((:file "package")
                (:file "load-library")
                (:cffi-grovel-file "grovel-types")
+               (:cffi-grovel-file "grovel-constants")
                (:file "types")
                (:file "interface")))
