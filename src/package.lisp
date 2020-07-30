@@ -268,6 +268,34 @@
    #:wtouchln
    #:wvline
 
+   ;; window attributes
+   #:wgetparent
+   #:is_cleared
+   #:is_idcok
+   #:is_idlok
+   #:is_immedok
+   #:is_keypad
+   #:is_leaveok
+   #:is_nodelay
+   #:is_notimeout
+   #:is_pad
+   #:is_scollok
+   #:is_subwin
+   #:is_syncok
+   #:wgetdelay
+   #:wgetscrreg
+
+   ;; mouse support
+   #:getmouse
+   #:ungetmouse
+   #:mousemask
+   #:wenclose
+   #:mouse_trafo
+   #:wmouse_trafo
+   #:mouseinterval
+
+
+   
    ;; CONSTANTS
    #:+NCURSES_VERSION_MAJOR+
    #:+NCURSES_VERSION_MINOR+

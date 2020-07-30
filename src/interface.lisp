@@ -294,24 +294,6 @@ extern NCURSES_EXPORT(int) use_window (WINDOW *, NCURSES_WINDOW_CB, void *);
 extern NCURSES_EXPORT(int) wresize (WINDOW *, int, int);
 extern NCURSES_EXPORT(void) nofilter(void);|#
 
-#|
-extern NCURSES_EXPORT(WINDOW *) wgetparent (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_cleared (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_idcok (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(bool) is_idlok (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(bool) is_immedok (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_keypad (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(bool) is_leaveok (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_nodelay (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_notimeout (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_pad (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(bool) is_scrollok (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_subwin (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(bool) is_syncok (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(int) wgetdelay (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(int) wgetscrreg (const WINDOW *, int *, int *); /* generated */
-|#
-
 (defcfun "wgetparent" window-ptr (win window-ptr))
 (defcfun "is_cleared" :boolean (win window-ptr))
 (defcfun "is_idcok" :boolean (win window-ptr))
@@ -327,7 +309,6 @@ extern NCURSES_EXPORT(int) wgetscrreg (const WINDOW *, int *, int *); /* generat
 (defcfun "is_syncok" :boolean (win window-ptr))
 (defcfun "wgetdelay" :int (win window-ptr))
 (defcfun "wgetscrreg" :int (win window-ptr) (top (:pointer :int)) (bottom (:pointer :int)))
-
 
 (defcfun "getmouse" :int (event (:pointer (:struct mevent))) )
 (defcfun "ungetmouse" :int (event (:pointer (:struct mevent))) )
