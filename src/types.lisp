@@ -1,7 +1,7 @@
 (in-package #:binding)
 
-(defctype window :pointer)
-(defctype screen :pointer)
-(defctype file :pointer)
+(defctype window-ptr :pointer)
+(defctype screen-ptr :pointer)
+(defctype file-ptr :pointer)
 
 
