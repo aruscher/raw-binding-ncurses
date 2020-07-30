@@ -1,3 +1,0 @@
-(in-package #:binding)
-
-k
