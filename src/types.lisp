@@ -5,3 +5,10 @@
 (defctype file-ptr :pointer)
 (defctype va_list :pointer)
 
+(defcstruct mevent
+  (id :short)
+  (x :int)
+  (y :int)
+  (z :int)
+  (bstate mmask_t))
+

@@ -312,3 +312,10 @@ extern NCURSES_EXPORT(int) wgetdelay (const WINDOW *);		/* generated */
 extern NCURSES_EXPORT(int) wgetscrreg (const WINDOW *, int *, int *); /* generated */
 |#
 
+(defcfun "getmouse" :int (event (:pointer (:struct mevent))) )
+(defcfun "ungetmouse" :int (event (:pointer (:struct mevent))) )
+(defcfun "mousemask" mmask_t (newmask mmask_t) (oldmask (:pointer mmask_t)))
+(defcfun "wenclose" :boolean (win window-ptr) (y :int) (x :int))
+(defcfun "mouse_trafo" :boolean (pY (:pointer :int)) (pX (:pointer :int)) (to_screen :boolean))
+(defcfun "wmouse_trafo" :boolean (win window-ptr) (pY (:pointer :int)) (pX (:pointer :int)) (to_screen :boolean))
+(defcfun "mouseinterval" :int (erval :int))
