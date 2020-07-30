@@ -1,15 +1,15 @@
 (in-package #:binding)
 
-;TODO addchstr
+(defcfun "addchstr" :int (chstr (:pointer chtype)))
 (defcfun "addnstr" :int (str :string) (n :int))
 (defcfun "addstr" :int (str :string))
-;TODO attroff
-;TODO attron
-;TODO attrset
-;TODO attr_get
-;TODO attr_off
-;TODO attr_on
-;TODO attr_set
+(defcfun "attroff" :int (attrs :int))
+(defcfun "attron" :int (attrs :int))
+(defcfun "attrset" :int (attrs :int))
+(defcfun "attr_get" :int (attrs (:pointer attr_t) (pair (:pointer short) (opts :pointer))))
+(defcfun "attr_off" :int (attrs attr_t) (opts :pointer))
+(defcfun "attr_on" :int (attrs attr_t) (opts :pointer))
+(defcfun "attr_set" :int (attrs attr_t) (pair :short) (opts :pointer))
 (defcfun "baudrate" :int)
 (defcfun "beep" :int)
 (defcfun "bkgd" :int (ch chtype))
@@ -35,7 +35,7 @@
 (defcfun "delscreen" :void (sp screen-ptr))
 (defcfun "delwin" window-ptr (win window-ptr))
 (defcfun "deleteln" :int)
-;TODO derwin
+(defcfun "derwin" window-ptr (orig window-ptr) (nlines :int) (ncols :int) (begin_y :int) (begin_x :int))
 (defcfun "doupdate" :int)
 (defcfun "dupwin" window-ptr (win window-ptr))
 (defcfun "echo" :int)
@@ -45,12 +45,12 @@
 (defcfun "erasechar" :char)
 (defcfun "filter" :void)
 (defcfun "flash" :int)
-;TODO flushinp
+(defcfun "flushnip" :int)
 (defcfun "getbkgd" chtype (win window-ptr))
 (defcfun "getch" :int)
 (defcfun "getnstr" :int (str :string) (n :int))
 (defcfun "getstr" :int (str :string))
-;TODO getwin
+(defcfun "getwin" window-ptr (filep file-ptr))
 (defcfun "halfdelay" :int (tenths :int))
 (defcfun "has_colors" :boolean)
 (defcfun "has_ic" :boolean)
@@ -60,8 +60,8 @@
 (defcfun "idlok" :int (win window-ptr) (bf :boolean))
 (defcfun "immedok" :void (win window-ptr) (bf :boolean))
 (defcfun "inch" chtype)
-;TODO inchnstr
-;TODO inchstr
+(defcfun "inchnstr" :int (inchstr (:pointer chtype)) (n :int))
+(defcfun "inchstr" :int (inchstr (:pointer chtype)))
 (defcfun "initscr" window-ptr)
 (defcfun "init_color" :int (color :short) (r :short) (g :short) (b :short))
 (defcfun "init_pair" :int (pair :short) (f :short) (b :short))
@@ -84,27 +84,27 @@
 (defcfun "meta" :int (win window-ptr) (bf :boolean))
 (defcfun "move" :int (y :int) (x :int))
 (defcfun "mvaddch" :int (y :int) (x :int) (ch chtype))
-;TODO mvaddchnstr
-;TODO mvaddchstr
+(defcfun "mvaddchnstr" :int (y :int) (x :int) (chstr (:pointer chtype) (n :int)))
+(defcfun "mvaddchstr" :int (y :int) (x :int) (chstr (:pointer chtype)))
 (defcfun "mvaddnstr" :int (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvaddstr" :int (y :int) (x :int) (str :string))
-;TODO mvchgat
-;TODO mvcur
+(defcfun "mvchgat" :int (y :intf (x :int) (n :int) (attr attr_t) (pair :short) (opts :pointer)))
+(defcfun "mvcur" :int (oldrow :int) (oldcol :int) (newrow :int) (newcol :int))
 (defcfun "mvdelch" :int (y :int) (x :int))
-;TODO mvderwin
+(defcfun "mvderwin" :int (win window-ptr) (par_y :int) (par_x :int))
 (defcfun "mvgetch" :int (y :int) (x :int))
 (defcfun "mvgetnstr" :int (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvgetstr" :int (y :int) (x :int) (str :string))
 (defcfun "mvhline" :int (y :int) (x :int) (ch chtype) (n :int))
 (defcfun "mvinch" chtype (y :int) (x :int))
-;TODO mvinchnstr
-;TODO mvinchstr
+(defcfun "mvinchnstr" :int (y :int) (x :int) (chstr (:pointer chtype)) (n :int))
+(defcfun "mvinchstr" :int (y :int) (x :int) (chstr (:pointer chtype)))
 (defcfun "mvinnstr" :int (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvinsch" :int (y :int) (x :int) (ch chtype))
 (defcfun "mvinsnstr" :int (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvinsstr" :int (y :int) (x :int) (str :string))
 (defcfun "mvinstr" :int (y :int) (x :int) (str :string))
-;TODO mvprintw
+(defcfun "mvprintw" :int (y :int) (x :int) (fmt :string) &rest)
 ;TODO mvscanw
 (defcfun "mvvline" :int (y :int) (x :int) (ch chtype) (n :int))
 (defcfun "mvwaddch" :int (win window-ptr) (y :int) (x :int) (ch chtype))
@@ -127,7 +127,7 @@
 (defcfun "mvwinsnstr" :int (win window-ptr) (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvwinsstr" :int (win window-ptr) (y :int) (x :int) (str :string))
 (defcfun "mvwinstr" :int (win window-ptr) (y :int) (x :int) (str :string))
-;TODO mvwprintw
+(defcfun "mvwprintw" :int (win window-ptr) (y :int) (x :int) (fmt :string) &rest)
 ;TODO mvwscanw
 (defcfun "mvwvline" :int (win window-ptr) (y :int) (x :int) (ch chtype) (n :int))
 (defcfun "napms" :int (ms :int))
@@ -149,6 +149,7 @@
 (defcfun "pechochar" :int (pad window-ptr) (ch chtype))
 (defcfun "pnoutrefresh" :int (pad window-ptr) (pminrow :int) (pmincol :int) (sminrow :int) (smincol :int) (smaxrow :int) (smaxcol :int))
 (defcfun "prefresh" :int (pad window-ptr) (pminrow :int) (pmincol :int) (sminrow :int) (smincol :int) (smaxrow :int) (smaxcol :int))
+(defcfun "printw" :int (fmt :string) &rest)
 ;TODO printw
 ;TODO putwin
 (defcfun "qiflush" :void)
@@ -205,7 +206,8 @@
 ;TODO vidattr
 ;TODO vidputs
 (defcfun "vline" :int (ch chtype) (n :int))
-;TODO vwprintw
+(defcfun "vwprintw" :int (win window-ptr) (fmt :string) (varglist va_list))
+(defcfun "vw_printw" :int (win window-ptr) (fmt :string) (varglist va_list))
 ;TODO vw_printw
 ;TODO vwscanw
 ;TODO vw_scanw
@@ -250,7 +252,7 @@
 (defcfun "winstr" :int (win window-ptr) (str :string))
 (defcfun "wmove" :int (win window-ptr) (y :int) (x :int))
 (defcfun "wnoutrefresh" :int (win window-ptr))
-;TODO wprintw
+(defcfun "wprintw" :int (win window-ptr) (fmt :string) &rest)
 (defcfun "wredrawln" :int (win window-ptr) (beg_line :int) (num_lines :int))
 (defcfun "wrefresh" :int (win window-ptr))
 ;TODO wscanw
