@@ -568,54 +568,12 @@ extern NCURSES_EXPORT(int) getpary (const WINDOW *);			/* generated */
 #define NCURSES_EXT_FUNCS 20200212
 typedef int (*NCURSES_WINDOW_CB)(WINDOW *, void *);
 typedef int (*NCURSES_SCREEN_CB)(SCREEN *, void *);
-extern NCURSES_EXPORT(bool) is_term_resized (int, int);
-extern NCURSES_EXPORT(char *) keybound (int, int);
-extern NCURSES_EXPORT(const char *) curses_version (void);
-extern NCURSES_EXPORT(int) alloc_pair (int, int);
-extern NCURSES_EXPORT(int) assume_default_colors (int, int);
-extern NCURSES_EXPORT(int) define_key (const char *, int);
-extern NCURSES_EXPORT(int) extended_color_content(int, int *, int *, int *);
-extern NCURSES_EXPORT(int) extended_pair_content(int, int *, int *);
-extern NCURSES_EXPORT(int) extended_slk_color(int);
-extern NCURSES_EXPORT(int) find_pair (int, int);
-extern NCURSES_EXPORT(int) free_pair (int);
-extern NCURSES_EXPORT(int) get_escdelay (void);
-extern NCURSES_EXPORT(int) init_extended_color(int, int, int, int);
-extern NCURSES_EXPORT(int) init_extended_pair(int, int, int);
-extern NCURSES_EXPORT(int) key_defined (const char *);
-extern NCURSES_EXPORT(int) keyok (int, bool);
-extern NCURSES_EXPORT(void) reset_color_pairs (void);
-extern NCURSES_EXPORT(int) resize_term (int, int);
-extern NCURSES_EXPORT(int) resizeterm (int, int);
-extern NCURSES_EXPORT(int) set_escdelay (int);
-extern NCURSES_EXPORT(int) set_tabsize (int);
-extern NCURSES_EXPORT(int) use_default_colors (void);
-extern NCURSES_EXPORT(int) use_extended_names (bool);
-extern NCURSES_EXPORT(int) use_legacy_coding (int);
-extern NCURSES_EXPORT(int) use_screen (SCREEN *, NCURSES_SCREEN_CB, void *);
-extern NCURSES_EXPORT(int) use_window (WINDOW *, NCURSES_WINDOW_CB, void *);
-extern NCURSES_EXPORT(int) wresize (WINDOW *, int, int);
-extern NCURSES_EXPORT(void) nofilter(void);
+
 
 /*
  * These extensions provide access to information stored in the WINDOW even
  * when NCURSES_OPAQUE is set:
  */
-extern NCURSES_EXPORT(WINDOW *) wgetparent (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_cleared (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_idcok (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(bool) is_idlok (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(bool) is_immedok (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_keypad (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(bool) is_leaveok (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_nodelay (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_notimeout (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_pad (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(bool) is_scrollok (const WINDOW *);	/* generated */
-extern NCURSES_EXPORT(bool) is_subwin (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(bool) is_syncok (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(int) wgetdelay (const WINDOW *);		/* generated */
-extern NCURSES_EXPORT(int) wgetscrreg (const WINDOW *, int *, int *); /* generated */
 
 #else
 #define curses_version() NCURSES_VERSION
