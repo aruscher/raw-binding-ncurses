@@ -1,6 +1,5 @@
 (in-package #:binding)
 
-
 ;TODO addchstr
 (defcfun "addnstr" :int (str :string) (n :int))
 (defcfun "addstr" :int (str :string))
