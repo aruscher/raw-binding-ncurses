@@ -312,6 +312,23 @@ extern NCURSES_EXPORT(int) wgetdelay (const WINDOW *);		/* generated */
 extern NCURSES_EXPORT(int) wgetscrreg (const WINDOW *, int *, int *); /* generated */
 |#
 
+(defcfun "wgetparent" window-ptr (win window-ptr))
+(defcfun "is_cleared" :boolean (win window-ptr))
+(defcfun "is_idcok" :boolean (win window-ptr))
+(defcfun "is_idlok" :boolean (win window-ptr))
+(defcfun "is_immedok" :boolean (win window-ptr))
+(defcfun "is_keypad" :boolean (win window-ptr))
+(defcfun "is_leaveok" :boolean (win window-ptr))
+(defcfun "is_nodelay" :boolean (win window-ptr))
+(defcfun "is_notimeout" :boolean (win window-ptr))
+(defcfun "is_pad" :boolean (win window-ptr))
+(defcfun "is_scollok" :boolean (win window-ptr))
+(defcfun "is_subwin" :boolean (win window-ptr))
+(defcfun "is_syncok" :boolean (win window-ptr))
+(defcfun "wgetdelay" :int (win window-ptr))
+(defcfun "wgetscrreg" :int (win window-ptr) (top (:pointer :int)) (bottom (:pointer :int)))
+
+
 (defcfun "getmouse" :int (event (:pointer (:struct mevent))) )
 (defcfun "ungetmouse" :int (event (:pointer (:struct mevent))) )
 (defcfun "mousemask" mmask_t (newmask mmask_t) (oldmask (:pointer mmask_t)))
