@@ -3,7 +3,8 @@
   (:nicknames #:binding)
   (:use #:cl #:cffi)
   (:export
-   ;;INTERFACE
+   ; INTERFACE
+   ;; default functions
    #:addchstr
    #:addnstr
    #:addstr
@@ -293,10 +294,8 @@
    #:mouse_trafo
    #:wmouse_trafo
    #:mouseinterval
-
-
    
-   ;; CONSTANTS
+   ; CONSTANTS
    #:+NCURSES_VERSION_MAJOR+
    #:+NCURSES_VERSION_MINOR+
    #:+NCURSES_VERSION_VERSION_PATCH+

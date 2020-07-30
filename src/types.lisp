@@ -4,6 +4,7 @@
 (defctype screen-ptr :pointer)
 (defctype file-ptr :pointer)
 (defctype va_list :pointer)
+(defctype ncurses_size_t :short)
 
 (defcstruct mevent
   (id :short)
@@ -12,3 +13,48 @@
   (z :int)
   (bstate mmask_t))
 
+(defcstruct cchar_t
+  (attr attr_t)
+  (chars wchar_t :count 5)
+  (ext_color :int))
+
+(defcstruct ldat)
+
+(defcstruct pdat
+  (pad_y ncurses_size_t)
+  (pad_x ncurses_size_t)
+  (pad_top ncurses_size_t)
+  (pad_left ncurses_size_t)
+  (pad_bottom ncurses_size_t)
+  (pad_right ncurses_size_t))
+
+(defcstruct win_st
+  (cury ncurses_size_t)
+  (curx ncurses_size_t)
+  (maxy ncurses_size_t)
+  (maxx ncurses_size_t)
+  (begy ncurses_size_t)
+  (begx ncurses_size_t)
+  (flags :short)
+  (attrs attr_t)
+  (bkgd chtype)
+  (notimeout :boolean)
+  (clear :boolean)
+  (leaveok :boolean)
+  (scroll :boolean)
+  (idlok :boolean)
+  (idcok :boolean)
+  (immed :boolean)
+  (sync :boolean)
+  (use_keypad :boolean)
+  (delay :int)
+  (line (:pointer (:struct ldat)))
+  (regtop ncurses_size_t)
+  (regbottom ncurses_size_t)
+  (parx :int)
+  (pary :int)
+  (parent (:pointer (:struct win_st)))
+  (pdad (:struct pdat))
+  (yoffset ncurses_size_t)
+  (bkgrnd (:pointer (:struct cchar_t)))
+  (color :int))
