@@ -3,7 +3,7 @@
   (:nicknames #:binding)
   (:use #:cl #:cffi)
   (:export
-   ; INTERFACE
+                                        ; INTERFACE
    ;; default functions
    #:addchstr
    #:addnstr
@@ -295,7 +295,7 @@
    #:wmouse_trafo
    #:mouseinterval
    
-   ; CONSTANTS
+                                        ; CONSTANTS
    #:+NCURSES_VERSION_MAJOR+
    #:+NCURSES_VERSION_MINOR+
    #:+NCURSES_VERSION_VERSION_PATCH+
@@ -352,5 +352,16 @@
    #:+A_TOP+
    #:+A_VERTICAL+
    #:+A_ITALIC+
+
+                                        ; Variables
+   #:*COLOR_PAIRS*
+   #:*COLORS*
+   #:*COLS*
+   #:*ESCDELAY*
+   #:*LINES*
+   #:*TABSIZE*
+   #:*curscr*
+   #:*newscr*
+   #:*stdscr*
 
    ))

@@ -12,6 +12,7 @@
                (:cffi-grovel-file "grovel-types")
                (:cffi-grovel-file "grovel-constants")
                (:file "types")
+               (:file "variables")
                (:file "interface")))
 
 (asdf:defsystem #:raw-ncurses-binding/demo
