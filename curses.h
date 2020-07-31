@@ -1,9 +1,189 @@
+/****************************************************************************
+ * Copyright 2018-2019,2020 Thomas E. Dickey                                *
+ * Copyright 1998-2016,2017 Free Software Foundation, Inc.                  *
+ *                                                                          *
+ * Permission is hereby granted, free of charge, to any person obtaining a  *
+ * copy of this software and associated documentation files (the            *
+ * "Software"), to deal in the Software without restriction, including      *
+ * without limitation the rights to use, copy, modify, merge, publish,      *
+ * distribute, distribute with modifications, sublicense, and/or sell       *
+ * copies of the Software, and to permit persons to whom the Software is    *
+ * furnished to do so, subject to the following conditions:                 *
+ *                                                                          *
+ * The above copyright notice and this permission notice shall be included  *
+ * in all copies or substantial portions of the Software.                   *
+ *                                                                          *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS  *
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF               *
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.   *
+ * IN NO EVENT SHALL THE ABOVE COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,   *
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR    *
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR    *
+ * THE USE OR OTHER DEALINGS IN THE SOFTWARE.                               *
+ *                                                                          *
+ * Except as contained in this notice, the name(s) of the above copyright   *
+ * holders shall not be used in advertising or otherwise to promote the     *
+ * sale, use or other dealings in this Software without prior written       *
+ * authorization.                                                           *
+ ****************************************************************************/
+
+/****************************************************************************
+ *  Author: Zeyd M. Ben-Halim <zmbenhal@netcom.com> 1992,1995               *
+ *     and: Eric S. Raymond <esr@snark.thyrsus.com>                         *
+ *     and: Thomas E. Dickey                        1996-on                 *
+ ****************************************************************************/
+
+/* $Id: curses.h.in,v 1.266 2020/02/08 10:51:53 tom Exp $ */
+
+#ifndef __NCURSES_H
+#define __NCURSES_H
+
+#define CURSES 1
+#define CURSES_H 1
+
+/* These are defined only in curses.h, and are used for conditional compiles */
+#define NCURSES_VERSION_MAJOR 6
+#define NCURSES_VERSION_MINOR 2
+#define NCURSES_VERSION_PATCH 20200212
+
+/* This is defined in more than one ncurses header, for identification */
+#undef  NCURSES_VERSION
+#define NCURSES_VERSION "6.2"
+
+/*
+ * Identify the mouse encoding version.
+ */
+#define NCURSES_MOUSE_VERSION 2
+
+/*
+ * Definitions to facilitate DLL's.
+ */
+#include <ncurses_dll.h>
+
+#if 1
+#include <stdint.h>
+#endif
+
+/*
+ * User-definable tweak to disable the include of <stdbool.h>.
+ */
+#ifndef NCURSES_ENABLE_STDBOOL_H
+#define NCURSES_ENABLE_STDBOOL_H 1
+#endif
+
+/*
+ * NCURSES_ATTR_T is used to quiet compiler warnings when building ncurses
+ * configured using --disable-macros.
+ */
+#ifndef NCURSES_ATTR_T
+#define NCURSES_ATTR_T int
+#endif
+
+/*
+ * Expands to 'const' if ncurses is configured using --enable-const.  Note that
+ * doing so makes it incompatible with other implementations of X/Open Curses.
+ */
+#undef  NCURSES_CONST
+#define NCURSES_CONST const
+
+#undef NCURSES_INLINE
+#define NCURSES_INLINE inline
+
+/*
+ * The standard type used for color values, and for color-pairs.  The latter
+ * allows the curses library to enumerate the combinations of foreground and
+ * background colors used by an application, and is normally the product of the
+ * total foreground and background colors.
+ *
+ * X/Open uses "short" for both of these types, ultimately because they are
+ * numbers from the SVr4 terminal database, which uses 16-bit signed values.
+ */
+#undef	NCURSES_COLOR_T
+#define	NCURSES_COLOR_T short
+
+#undef	NCURSES_PAIRS_T
+#define	NCURSES_PAIRS_T short
+
+/*
+ * Definitions used to make WINDOW and similar structs opaque.
+ */
+#ifndef NCURSES_INTERNALS
+#define NCURSES_OPAQUE       0
+#define NCURSES_OPAQUE_FORM  0
+#define NCURSES_OPAQUE_MENU  0
+#define NCURSES_OPAQUE_PANEL 0
+#endif
+
+/*
+ * Definition used to optionally suppress wattr* macros to help with the
+ * transition from ncurses5 to ncurses6 by allowing the header files to
+ * be shared across development packages for ncursesw in both ABIs.
+ */
+#ifndef NCURSES_WATTR_MACROS
+#define NCURSES_WATTR_MACROS 0
+#endif
+
+/*
+ * The reentrant code relies on the opaque setting, but adds features.
+ */
+#ifndef NCURSES_REENTRANT
+#define NCURSES_REENTRANT 0
+#endif
+
+/*
+ * In certain environments, we must work around linker problems for data
+ */
+#undef NCURSES_BROKEN_LINKER
+#if 0
+#define NCURSES_BROKEN_LINKER 1
+#endif
+
+/*
+ * Control whether bindings for interop support are added.
+ */
+#undef	NCURSES_INTEROP_FUNCS
+#define	NCURSES_INTEROP_FUNCS 1
+
+/*
+ * The internal type used for window dimensions.
+ */
+#undef	NCURSES_SIZE_T
+#define	NCURSES_SIZE_T short
+
+/*
+ * Control whether tparm() supports varargs or fixed-parameter list.
+ */
+#undef NCURSES_TPARM_VARARGS
+#define NCURSES_TPARM_VARARGS 1
+
+/*
+ * Control type used for tparm's arguments.  While X/Open equates long and
+ * char* values, this is not always workable for 64-bit platforms.
+ */
+#undef NCURSES_TPARM_ARG
+#define NCURSES_TPARM_ARG intptr_t
+
+/*
+ * Control whether ncurses uses wcwidth() for checking width of line-drawing
+ * characters.
+ */
+#undef NCURSES_WCWIDTH_GRAPHICS
+#define NCURSES_WCWIDTH_GRAPHICS 1
 
 /*
  * NCURSES_CH_T is used in building the library, but not used otherwise in
  * this header file, since that would make the normal/wide-character versions
  * of the header incompatible.
- ask_t;
+ */
+#undef	NCURSES_CH_T
+#define NCURSES_CH_T cchar_t
+
+#if 1 && defined(_LP64)
+typedef unsigned chtype;
+typedef unsigned mmask_t;
+#else
+typedef uint32_t chtype;
+typedef uint32_t mmask_t;
 #endif
 
 /*
@@ -18,12 +198,177 @@
  * test macros, define it at this point if the standard feature test macros
  * indicate that it should be defined.
  */
+#ifndef NCURSES_WIDECHAR
+#if defined(_XOPEN_SOURCE_EXTENDED) || (defined(_XOPEN_SOURCE) && (_XOPEN_SOURCE - 0 >= 500))
+#define NCURSES_WIDECHAR 1
+#else
+#define NCURSES_WIDECHAR 0
+#endif
+#endif /* NCURSES_WIDECHAR */
+
 #include <stdarg.h>	/* we need va_list */
 #if NCURSES_WIDECHAR
 #include <stddef.h>	/* we want wchar_t */
 #endif
 
+/* X/Open and SVr4 specify that curses implements 'bool'.  However, C++ may also
+ * implement it.  If so, we must use the C++ compiler's type to avoid conflict
+ * with other interfaces.
+ *
+ * A further complication is that <stdbool.h> may declare 'bool' to be a
+ * different type, such as an enum which is not necessarily compatible with
+ * C++.  If we have <stdbool.h>, make 'bool' a macro, so users may #undef it.
+ * Otherwise, let it remain a typedef to avoid conflicts with other #define's.
+ * In either case, make a typedef for NCURSES_BOOL which can be used if needed
+ * from either C or C++.
+ */
+
+#undef TRUE
+#define TRUE    1
+
+#undef FALSE
+#define FALSE   0
+
+typedef unsigned char NCURSES_BOOL;
+
+#if defined(__cplusplus)	/* __cplusplus, etc. */
+
+/* use the C++ compiler's bool type */
+#define NCURSES_BOOL bool
+
+#else			/* c89, c99, etc. */
+
+#if NCURSES_ENABLE_STDBOOL_H
+#include <stdbool.h>
+/* use whatever the C compiler decides bool really is */
+#define NCURSES_BOOL bool
+#else
+/* there is no predefined bool - use our own */
+#undef bool
+#define bool NCURSES_BOOL
+#endif
+
+#endif /* !__cplusplus, etc. */
+
+#ifdef __cplusplus
+extern "C" {
+#define NCURSES_CAST(type,value) static_cast<type>(value)
+#else
+#define NCURSES_CAST(type,value) (type)(value)
+#endif
+
+#define NCURSES_OK_ADDR(p) (0 != NCURSES_CAST(const void *, (p)))
+
+/*
+ * X/Open attributes.  In the ncurses implementation, they are identical to the
+ * A_ attributes.
+ */
+#define WA_ATTRIBUTES	A_ATTRIBUTES
+#define WA_NORMAL	A_NORMAL
+#define WA_STANDOUT	A_STANDOUT
+#define WA_UNDERLINE	A_UNDERLINE
+#define WA_REVERSE	A_REVERSE
+#define WA_BLINK	A_BLINK
+#define WA_DIM		A_DIM
+#define WA_BOLD		A_BOLD
+#define WA_ALTCHARSET	A_ALTCHARSET
+#define WA_INVIS	A_INVIS
+#define WA_PROTECT	A_PROTECT
+#define WA_HORIZONTAL	A_HORIZONTAL
+#define WA_LEFT		A_LEFT
+#define WA_LOW		A_LOW
+#define WA_RIGHT	A_RIGHT
+#define WA_TOP		A_TOP
+#define WA_VERTICAL	A_VERTICAL
+
+#if 1
+#define WA_ITALIC	A_ITALIC	/* ncurses extension */
+#endif
+
+/* colors */
+#define COLOR_BLACK	0
+#define COLOR_RED	1
+#define COLOR_GREEN	2
+#define COLOR_YELLOW	3
+#define COLOR_BLUE	4
+#define COLOR_MAGENTA	5
+#define COLOR_CYAN	6
+#define COLOR_WHITE	7
+
 /* line graphics */
+
+#if 0 || NCURSES_REENTRANT
+NCURSES_WRAPPED_VAR(chtype*, acs_map);
+#define acs_map NCURSES_PUBLIC_VAR(acs_map())
+#else
+extern NCURSES_EXPORT_VAR(chtype) acs_map[];
+#endif
+
+#define NCURSES_ACS(c)	(acs_map[NCURSES_CAST(unsigned char,(c))])
+
+/* VT100 symbols begin here */
+#define ACS_ULCORNER	NCURSES_ACS('l') /* upper left corner */
+#define ACS_LLCORNER	NCURSES_ACS('m') /* lower left corner */
+#define ACS_URCORNER	NCURSES_ACS('k') /* upper right corner */
+#define ACS_LRCORNER	NCURSES_ACS('j') /* lower right corner */
+#define ACS_LTEE	NCURSES_ACS('t') /* tee pointing right */
+#define ACS_RTEE	NCURSES_ACS('u') /* tee pointing left */
+#define ACS_BTEE	NCURSES_ACS('v') /* tee pointing up */
+#define ACS_TTEE	NCURSES_ACS('w') /* tee pointing down */
+#define ACS_HLINE	NCURSES_ACS('q') /* horizontal line */
+#define ACS_VLINE	NCURSES_ACS('x') /* vertical line */
+#define ACS_PLUS	NCURSES_ACS('n') /* large plus or crossover */
+#define ACS_S1		NCURSES_ACS('o') /* scan line 1 */
+#define ACS_S9		NCURSES_ACS('s') /* scan line 9 */
+#define ACS_DIAMOND	NCURSES_ACS('`') /* diamond */
+#define ACS_CKBOARD	NCURSES_ACS('a') /* checker board (stipple) */
+#define ACS_DEGREE	NCURSES_ACS('f') /* degree symbol */
+#define ACS_PLMINUS	NCURSES_ACS('g') /* plus/minus */
+#define ACS_BULLET	NCURSES_ACS('~') /* bullet */
+/* Teletype 5410v1 symbols begin here */
+#define ACS_LARROW	NCURSES_ACS(',') /* arrow pointing left */
+#define ACS_RARROW	NCURSES_ACS('+') /* arrow pointing right */
+#define ACS_DARROW	NCURSES_ACS('.') /* arrow pointing down */
+#define ACS_UARROW	NCURSES_ACS('-') /* arrow pointing up */
+#define ACS_BOARD	NCURSES_ACS('h') /* board of squares */
+#define ACS_LANTERN	NCURSES_ACS('i') /* lantern symbol */
+#define ACS_BLOCK	NCURSES_ACS('0') /* solid square block */
+/*
+ * These aren't documented, but a lot of System Vs have them anyway
+ * (you can spot pprryyzz{{||}} in a lot of AT&T terminfo strings).
+ * The ACS_names may not match AT&T's, our source didn't know them.
+ */
+#define ACS_S3		NCURSES_ACS('p') /* scan line 3 */
+#define ACS_S7		NCURSES_ACS('r') /* scan line 7 */
+#define ACS_LEQUAL	NCURSES_ACS('y') /* less/equal */
+#define ACS_GEQUAL	NCURSES_ACS('z') /* greater/equal */
+#define ACS_PI		NCURSES_ACS('{') /* Pi */
+#define ACS_NEQUAL	NCURSES_ACS('|') /* not equal */
+#define ACS_STERLING	NCURSES_ACS('}') /* UK pound sign */
+
+/*
+ * Line drawing ACS names are of the form ACS_trbl, where t is the top, r
+ * is the right, b is the bottom, and l is the left.  t, r, b, and l might
+ * be B (blank), S (single), D (double), or T (thick).  The subset defined
+ * here only uses B and S.
+ */
+#define ACS_BSSB	ACS_ULCORNER
+#define ACS_SSBB	ACS_LLCORNER
+#define ACS_BBSS	ACS_URCORNER
+#define ACS_SBBS	ACS_LRCORNER
+#define ACS_SBSS	ACS_RTEE
+#define ACS_SSSB	ACS_LTEE
+#define ACS_SSBS	ACS_BTEE
+#define ACS_BSSS	ACS_TTEE
+#define ACS_BSBS	ACS_HLINE
+#define ACS_SBSB	ACS_VLINE
+#define ACS_SSSS	ACS_PLUS
+
+#undef	ERR
+#define ERR     (-1)
+
+#undef	OK
+#define OK      (0)
 
 /* values for the _flags member */
 #define _SUBWIN         0x01	/* is this a sub-window? */
@@ -78,6 +423,20 @@ typedef unsigned int wint_t1;
  * (spacing and nonspacing) do not fill the array, a null L'\0' follows.
  * Otherwise, a null is assumed to follow when extracting via getcchar().
  */
+#define CCHARW_MAX	5
+typedef struct
+{
+    attr_t	attr;
+    wchar_t	chars[CCHARW_MAX];
+#if 1
+#undef NCURSES_EXT_COLORS
+#define NCURSES_EXT_COLORS 20200212
+    int		ext_color;	/* color pair, must be more than 16-bits */
+#endif
+}
+cchar_t;
+
+#endif /* NCURSES_WIDECHAR */
 
 #if !NCURSES_OPAQUE
 struct ldat;
@@ -250,7 +609,8 @@ typedef int (*NCURSES_OUTC)(int);
  * requirements.
  */
 
-
+extern NCURSES_EXPORT(int) addch (const chtype);			/* generated */
+extern NCURSES_EXPORT(int) addchnstr (const chtype *, int);		/* generated */
 extern NCURSES_EXPORT(int) addchstr (const chtype *);			/* generated */
 extern NCURSES_EXPORT(int) addnstr (const char *, int);			/* generated */
 extern NCURSES_EXPORT(int) addstr (const char *);			/* generated */
@@ -568,12 +928,54 @@ extern NCURSES_EXPORT(int) getpary (const WINDOW *);			/* generated */
 #define NCURSES_EXT_FUNCS 20200212
 typedef int (*NCURSES_WINDOW_CB)(WINDOW *, void *);
 typedef int (*NCURSES_SCREEN_CB)(SCREEN *, void *);
-
+extern NCURSES_EXPORT(bool) is_term_resized (int, int);
+extern NCURSES_EXPORT(char *) keybound (int, int);
+extern NCURSES_EXPORT(const char *) curses_version (void);
+extern NCURSES_EXPORT(int) alloc_pair (int, int);
+extern NCURSES_EXPORT(int) assume_default_colors (int, int);
+extern NCURSES_EXPORT(int) define_key (const char *, int);
+extern NCURSES_EXPORT(int) extended_color_content(int, int *, int *, int *);
+extern NCURSES_EXPORT(int) extended_pair_content(int, int *, int *);
+extern NCURSES_EXPORT(int) extended_slk_color(int);
+extern NCURSES_EXPORT(int) find_pair (int, int);
+extern NCURSES_EXPORT(int) free_pair (int);
+extern NCURSES_EXPORT(int) get_escdelay (void);
+extern NCURSES_EXPORT(int) init_extended_color(int, int, int, int);
+extern NCURSES_EXPORT(int) init_extended_pair(int, int, int);
+extern NCURSES_EXPORT(int) key_defined (const char *);
+extern NCURSES_EXPORT(int) keyok (int, bool);
+extern NCURSES_EXPORT(void) reset_color_pairs (void);
+extern NCURSES_EXPORT(int) resize_term (int, int);
+extern NCURSES_EXPORT(int) resizeterm (int, int);
+extern NCURSES_EXPORT(int) set_escdelay (int);
+extern NCURSES_EXPORT(int) set_tabsize (int);
+extern NCURSES_EXPORT(int) use_default_colors (void);
+extern NCURSES_EXPORT(int) use_extended_names (bool);
+extern NCURSES_EXPORT(int) use_legacy_coding (int);
+extern NCURSES_EXPORT(int) use_screen (SCREEN *, NCURSES_SCREEN_CB, void *);
+extern NCURSES_EXPORT(int) use_window (WINDOW *, NCURSES_WINDOW_CB, void *);
+extern NCURSES_EXPORT(int) wresize (WINDOW *, int, int);
+extern NCURSES_EXPORT(void) nofilter(void);
 
 /*
  * These extensions provide access to information stored in the WINDOW even
  * when NCURSES_OPAQUE is set:
  */
+extern NCURSES_EXPORT(WINDOW *) wgetparent (const WINDOW *);	/* generated */
+extern NCURSES_EXPORT(bool) is_cleared (const WINDOW *);	/* generated */
+extern NCURSES_EXPORT(bool) is_idcok (const WINDOW *);		/* generated */
+extern NCURSES_EXPORT(bool) is_idlok (const WINDOW *);		/* generated */
+extern NCURSES_EXPORT(bool) is_immedok (const WINDOW *);	/* generated */
+extern NCURSES_EXPORT(bool) is_keypad (const WINDOW *);		/* generated */
+extern NCURSES_EXPORT(bool) is_leaveok (const WINDOW *);	/* generated */
+extern NCURSES_EXPORT(bool) is_nodelay (const WINDOW *);	/* generated */
+extern NCURSES_EXPORT(bool) is_notimeout (const WINDOW *);	/* generated */
+extern NCURSES_EXPORT(bool) is_pad (const WINDOW *);		/* generated */
+extern NCURSES_EXPORT(bool) is_scrollok (const WINDOW *);	/* generated */
+extern NCURSES_EXPORT(bool) is_subwin (const WINDOW *);		/* generated */
+extern NCURSES_EXPORT(bool) is_syncok (const WINDOW *);		/* generated */
+extern NCURSES_EXPORT(int) wgetdelay (const WINDOW *);		/* generated */
+extern NCURSES_EXPORT(int) wgetscrreg (const WINDOW *, int *, int *); /* generated */
 
 #else
 #define curses_version() NCURSES_VERSION
@@ -697,6 +1099,35 @@ extern NCURSES_EXPORT(int) NCURSES_SP_NAME(use_legacy_coding) (SCREEN*, int);	/*
 #define NCURSES_SP_FUNCS 0
 #define NCURSES_SP_NAME(name) name
 #define NCURSES_SP_OUTC NCURSES_OUTC
+#endif
+
+/* attributes */
+
+#define NCURSES_ATTR_SHIFT       8
+#define NCURSES_BITS(mask,shift) (NCURSES_CAST(chtype,(mask)) << ((shift) + NCURSES_ATTR_SHIFT))
+
+#define A_NORMAL	(1U - 1U)
+#define A_ATTRIBUTES	NCURSES_BITS(~(1U - 1U),0)
+#define A_CHARTEXT	(NCURSES_BITS(1U,0) - 1U)
+#define A_COLOR		NCURSES_BITS(((1U) << 8) - 1U,0)
+#define A_STANDOUT	NCURSES_BITS(1U,8)
+#define A_UNDERLINE	NCURSES_BITS(1U,9)
+#define A_REVERSE	NCURSES_BITS(1U,10)
+#define A_BLINK		NCURSES_BITS(1U,11)
+#define A_DIM		NCURSES_BITS(1U,12)
+#define A_BOLD		NCURSES_BITS(1U,13)
+#define A_ALTCHARSET	NCURSES_BITS(1U,14)
+#define A_INVIS		NCURSES_BITS(1U,15)
+#define A_PROTECT	NCURSES_BITS(1U,16)
+#define A_HORIZONTAL	NCURSES_BITS(1U,17)
+#define A_LEFT		NCURSES_BITS(1U,18)
+#define A_LOW		NCURSES_BITS(1U,19)
+#define A_RIGHT		NCURSES_BITS(1U,20)
+#define A_TOP		NCURSES_BITS(1U,21)
+#define A_VERTICAL	NCURSES_BITS(1U,22)
+
+#if 1
+#define A_ITALIC	NCURSES_BITS(1U,23)	/* ncurses extension */
 #endif
 
 /*
@@ -1077,7 +1508,7 @@ extern NCURSES_EXPORT_VAR(int) TABSIZE;
 #define KEY_SRESET	0530		/* Soft (partial) reset (unreliable) */
 #define KEY_RESET	0531		/* Reset or hard reset (unreliable) */
 /*
- * These definitions were generated by ./MKkey_defs.sh ./Caps ./Caps-ncurses
+ * These definitions were generated by ./MKkey_defs.sh ../../include/Caps ../../include/Caps-ncurses
  */
 #define KEY_DOWN	0402		/* down-arrow key */
 #define KEY_UP		0403		/* up-arrow key */

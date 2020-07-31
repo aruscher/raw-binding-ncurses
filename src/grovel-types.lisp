@@ -4,10 +4,10 @@
 ;; - FILE
 
 (include "ncurses.h"
-         "stddef.h")
+         "stddef.h"
+         "stdarg.h")
 
 (ctype chtype "chtype")
-(ctype mmask_t "mmask_t")
-(ctype wchar_t "wchar_t")
-(ctype attr_t "attr_t")
+(ctype mmask-t "mmask_t")
+(ctype wchar-t "wchar_t")
 

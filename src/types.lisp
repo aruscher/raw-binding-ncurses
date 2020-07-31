@@ -1,41 +1,30 @@
 (in-package #:binding)
 
-(defctype screen-ptr :pointer)
-(defctype file-ptr :pointer)
-(defctype va_list :pointer)
-(defctype ncurses_size_t :short)
+(defctype ncurses-size-t :short)
+(defctype attr-t chtype)
 
-(defcstruct mevent
-  (id :short)
-  (x :int)
-  (y :int)
-  (z :int)
-  (bstate mmask_t))
+;; ------------------------------
+;; CCHAR-T
+(defcstruct cchar-t
+  (attr attr-t)
+  (chars wchar-t :count 5)
+  (ext-color :int))
 
-(defcstruct cchar_t
-  (attr attr_t)
-  (chars wchar_t :count 5)
-  (ext_color :int))
-
-(defcstruct ldat)
-
+;; ------------------------------
+;; Window
 (defcstruct pdat
-  (pad_y ncurses_size_t)
-  (pad_x ncurses_size_t)
-  (pad_top ncurses_size_t)
-  (pad_left ncurses_size_t)
-  (pad_bottom ncurses_size_t)
-  (pad_right ncurses_size_t))
+  (pad-y ncurses-size-t)
+  (pad-x ncurses-size-t)
+  (pad-top ncurses-size-t)
+  (pad-left ncurses-size-t)
+  (pad-bottom ncurses-size-t)
+  (pad-right ncurses-size-t))
 
-(defcstruct win_st
-  (cury ncurses_size_t)
-  (curx ncurses_size_t)
-  (maxy ncurses_size_t)
-  (maxx ncurses_size_t)
-  (begy ncurses_size_t)
-  (begx ncurses_size_t)
+(defcstruct win-st
+  (cury ncurses-size-t)
+  (curx ncurses-size-t)
   (flags :short)
-  (attrs attr_t)
+  (attrs attr-t)
   (bkgd chtype)
   (notimeout :boolean)
   (clear :boolean)
@@ -43,19 +32,31 @@
   (scroll :boolean)
   (idlok :boolean)
   (idcok :boolean)
-  (immed :boolean)
   (sync :boolean)
-  (use_keypad :boolean)
+  (use-keypad :boolean)
   (delay :int)
-  (line (:pointer (:struct ldat)))
-  (regtop ncurses_size_t)
-  (regbottom ncurses_size_t)
+  (line :pointer) ;; TODO: struct ldat *_line;	/* the actual line data */
+  (regtop ncurses-size-t)
+  (regbottom ncurses-size-t)
   (parx :int)
   (pary :int)
-  (parent (:pointer (:struct win_st)))
-  (pdad (:struct pdat))
-  (yoffset ncurses_size_t)
-  (bkgrnd (:pointer (:struct cchar_t)))
+  (parent (:pointer (:struct win-st)))
+  (pad (:struct pdat))
+  (yoffset ncurses-size-t)
+  (bkgrnd (:struct cchar-t ))
   (color :int))
 
-(defctype window-ptr (:pointer (:struct win_st)))
+#|typedef struct _win_st WINDOW;|#
+(defctype window (:struct win-st))
+
+;; ------------------------------
+;; Mouse
+(defcstruct mevent
+  (id :short)
+  (x :int)
+  (y :int)
+  (z :int)
+  (bstate mmask-t))
+
+
+(defctype file-ptr :pointer)
