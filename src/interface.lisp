@@ -1,6 +1,6 @@
 (in-package #:binding)
 
-(defcfun "addchstr" :int (chstr (:pointer chtype)))
+
 (defcfun "addnstr" :int (str :string) (n :int))
 (defcfun "addstr" :int (str :string))
 (defcfun "attroff" :int (attrs :int))
@@ -84,8 +84,8 @@
 (defcfun "meta" :int (win (:pointer window)) (bf :boolean))
 (defcfun "move" :int (y :int) (x :int))
 
-(defcfun "mvaddchnstr" :int (y :int) (x :int) (chstr (:pointer chtype) (n :int)))
-(defcfun "mvaddchstr" :int (y :int) (x :int) (chstr (:pointer chtype)))
+
+
 (defcfun "mvaddnstr" :int (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvaddstr" :int (y :int) (x :int) (str :string))
 (defcfun "mvchgat" :int (y :int (x :int) (n :int) (attr attr-t) (pair :short) (opts :pointer)))
@@ -108,8 +108,8 @@
 (defcfun "mvscanw" :int (y :int) (x :int) (fmt string) &rest)
 (defcfun "mvvline" :int (y :int) (x :int) (ch chtype) (n :int))
 
-(defcfun "mvwaddchnstr" :int (win (:pointer window)) (y :int) (x :int) (chstr (:pointer chtype)) (n :int))
-(defcfun "mvwaddchstr" :int (win (:pointer window)) (y :int) (x :int) (chstr (:pointer chtype)))
+
+
 (defcfun "mvwaddnstr" :int (win (:pointer window)) (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvwaddstr" :int (win (:pointer window)) (y :int) (x :int) (str :string))
 (defcfun "mvwchgat" :int (win (:pointer window)) (y :int) (x :int) (n :int) (attr attr-t) (pair :short) (opts :pointer))
@@ -210,8 +210,8 @@
 ;(defcfun "vwscanw" :int (win (:pointer window)) (fmt :string) (varglist va_list))
 ;(defcfun "vw_scanw" :int (win (:pointer window)) (fmt :string) (varglist va_list))
 
-(defcfun "waddchnstr" :int (win (:pointer window)) (chstr (:pointer chtype) (n :int)))
-(defcfun "waddchstr" :int (win (:pointer window)) (chstr (:pointer chtype)))
+
+
 (defcfun "waddnstr" :int (win (:pointer window)) (str :string) (n :int))
 (defcfun "waddstr" :int (win (:pointer window)) (str :string))
 (defcfun "wattron" :int (win (:pointer window)) (attrs :int))

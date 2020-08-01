@@ -33,3 +33,6 @@ int wechochar(WINDOW *win, const chtype ch);
 (defcfun "wechochar" :int
   (win (:pointer window))
   (ch chtype))
+
+
+;; ACS Line Graphics
