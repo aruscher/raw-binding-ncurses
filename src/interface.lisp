@@ -5,11 +5,12 @@
 
 
 (defcfun "baudrate" :int)
-(defcfun "beep" :int)
-(defcfun "bkgd" :int (ch chtype))
-(defcfun "bkgdset" :void (ch chtype))
-(defcfun "border" :int (ls chtype) (rs chtype) (ts chtype) (bs chtype) (tl chtype) (tr chtype) (bl chtype) (br chtype))
-(defcfun "box" :int (win (:pointer window)) (verch chtype) (horch chtype))
+
+
+
+
+
+
 
 (defcfun "cbreak" :int)
 
@@ -38,9 +39,9 @@
 (defcfun "endwin" :int)
 (defcfun "erasechar" :char)
 (defcfun "filter" :void)
-(defcfun "flash" :int)
+
 (defcfun "flushnip" :int)
-(defcfun "getbkgd" chtype (win (:pointer window)))
+
 (defcfun "getch" :int)
 (defcfun "getnstr" :int (str :string) (n :int))
 (defcfun "getstr" :int (str :string))
@@ -49,7 +50,7 @@
 
 (defcfun "has_ic" :boolean)
 (defcfun "has_il" :boolean)
-(defcfun "hline" :int (ch chtype) (n :int))
+
 (defcfun "idcok" :void (win (:pointer window)) (bf :boolean))
 (defcfun "idlok" :int (win (:pointer window)) (bf :boolean))
 (defcfun "immedok" :void (win (:pointer window)) (bf :boolean))
@@ -89,7 +90,7 @@
 (defcfun "mvgetch" :int (y :int) (x :int))
 (defcfun "mvgetnstr" :int (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvgetstr" :int (y :int) (x :int) (str :string))
-(defcfun "mvhline" :int (y :int) (x :int) (ch chtype) (n :int))
+
 (defcfun "mvinch" chtype (y :int) (x :int))
 (defcfun "mvinchnstr" :int (y :int) (x :int) (chstr (:pointer chtype)) (n :int))
 (defcfun "mvinchstr" :int (y :int) (x :int) (chstr (:pointer chtype)))
@@ -100,7 +101,7 @@
 (defcfun "mvinstr" :int (y :int) (x :int) (str :string))
 (defcfun "mvprintw" :int (y :int) (x :int) (fmt :string) &rest)
 (defcfun "mvscanw" :int (y :int) (x :int) (fmt string) &rest)
-(defcfun "mvvline" :int (y :int) (x :int) (ch chtype) (n :int))
+
 
 
 
@@ -111,7 +112,7 @@
 (defcfun "mvwgetch" :int (win (:pointer window)) (y :int) (x :int))
 (defcfun "mvwgetnstr" :int (win (:pointer window)) (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvwgetstr" :int (win (:pointer window)) (y :int) (x :int) (str :string))
-(defcfun "mvwhline" :int (win (:pointer window)) (y :int) (x :int) (ch chtype) (n :int))
+
 (defcfun "mvwin" (:pointer window) (win (:pointer window)) (y :int) (x :int))
 (defcfun "mvwinch" chtype (win (:pointer window)) (y :int) (x :int))
 (defcfun "mvwinchnstr" :int (win (:pointer window)) (y :int) (x :int) (chstr (:pointer chtype) (n :int)))
@@ -123,7 +124,7 @@
 (defcfun "mvwinstr" :int (win (:pointer window)) (y :int) (x :int) (str :string))
 (defcfun "mvwprintw" :int (win (:pointer window)) (y :int) (x :int) (fmt :string) &rest)
 (defcfun "mvwscanw" :int (win (:pointer window)) (y :int) (x :int) (fmt :string) &rest)
-(defcfun "mvwvline" :int (win (:pointer window)) (y :int) (x :int) (ch chtype) (n :int))
+
 (defcfun "napms" :int (ms :int))
 (defcfun "newpad" (:pointer window) (nlines :int) (nclos :int))
 ;;(defcfun "newterm" (:pointer screen) (type :string) (outfd file-ptr) (infd file-ptr))
@@ -196,7 +197,7 @@
 (defcfun "use_tioctl" :void (f :boolean))
 (defcfun "vidattr" :int (attrs chtype))
 ;TODO vidputs -  int vidputs(chtype attrs, int (*putc)(int));
-(defcfun "vline" :int (ch chtype) (n :int))
+
 ;(defcfun "vwprintw" :int (win (:pointer window)) (fmt :string) (varglist va_list))
 ;(defcfun "vw_printw" :int (win (:pointer window)) (fmt :string) (varglist va_list))
 ;(defcfun "vwscanw" :int (win (:pointer window)) (fmt :string) (varglist va_list))
@@ -204,9 +205,9 @@
 
 
 
-(defcfun "wbkgd" :int (win (:pointer window)) (ch chtype))
-(defcfun "wbkgdset" :void (win (:pointer window)) (ch chtype))
-(defcfun "wborder" :int (win (:pointer window)) (ls chtype) (rs chtype) (ts chtype) (bs chtype) (tl chtype) (tr chtype) (bl chtype) (br chtype))
+
+
+
 
 (defcfun "wclear" :int (win (:pointer window)))
 (defcfun "wclrtobot" :int (win (:pointer window)))
@@ -220,7 +221,7 @@
 (defcfun "wgetch" :int (win (:pointer window)))
 (defcfun "wgetnstr" :int (win (:pointer window)) (str :string) (n :int))
 (defcfun "wgetstr" :int (win (:pointer window)) (str :string))
-(defcfun "whline" :int (win (:pointer window)) (ch chtype) (n :int))
+
 (defcfun "winch" chtype (win (:pointer window)))
 (defcfun "winchnstr" :int (win (:pointer window)) (chstr (:pointer chtype)) (n :int))
 (defcfun "winchstr" :int (win (:pointer window)) (chstr (:pointer chtype)))
@@ -244,7 +245,7 @@
 (defcfun "wsyncup" :void (win (:pointer window)))
 (defcfun "wtimeout" :void (win (:pointer window)) (delay :int))
 (defcfun "wtouchln" :int (win (:pointer window)) (y :int) (n :int) (changed :int))
-(defcfun "wvline" :int (win (:pointer window)) (ch chtype) (n :int))
+
 
 #|
 extern NCURSES_EXPORT(bool) is_term_resized (int, int);
