@@ -28,15 +28,6 @@
 (constant (+WA-VERTICAL+ "WA_VERTICAL"))
 (constant (+WA-ITALIC+ "WA_ITALIC"))
 
-;; colors
-(constant (+COLOR-BLACK+ "COLOR_BLACK"))
-(constant (+COLOR-RED+ "COLOR_RED"))
-(constant (+COLOR-GREEN+ "COLOR_GREEN"))
-(constant (+COLOR-YELLOW+ "COLOR_YELLOW"))
-(constant (+COLOR-BLUE+ "COLOR_BLUE"))
-(constant (+COLOR-MAGENTA+ "COLOR_MAGENTA"))
-(constant (+COLOR-CYAN+ "COLOR_CYAN"))
-(constant (+COLOR-WHITE+ "COLOR_WHITE"))
 
 ;; attributes
 (constant (+A-NORMAL+ "A_NORMAL"))

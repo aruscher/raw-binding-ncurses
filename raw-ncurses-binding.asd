@@ -8,10 +8,12 @@
   :depends-on (:cffi)
   :pathname "src"
   :components ((:file "package")
-               (:file "load-library")
                (:cffi-grovel-file "grovel-types")
                (:cffi-grovel-file "grovel-constants")
+               ;;
+               (:file "load-library")
                (:file "types")
+               (:file "color")
                (:file "interface")))
 
 ;; (asdf:defsystem #:raw-ncurses-binding/demo

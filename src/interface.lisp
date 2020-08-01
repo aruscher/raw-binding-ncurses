@@ -16,16 +16,16 @@
 (defcfun "bkgdset" :void (ch chtype))
 (defcfun "border" :int (ls chtype) (rs chtype) (ts chtype) (bs chtype) (tl chtype) (tr chtype) (bl chtype) (br chtype))
 (defcfun "box" :int (win (:pointer window)) (verch chtype) (horch chtype))
-(defcfun "can_change_color" :bool)
+
 (defcfun "cbreak" :int)
 (defcfun "chgat" :int (n :int) (attr attr-t) (pair :short) (opts :pointer))
 (defcfun "clear" :int)
 (defcfun "clearok" :int (win (:pointer window)) (bf :boolean))
 (defcfun "clrtobot" :int)
 (defcfun "clrtoeol" :int)
-(defcfun "color_content" :int (color :short) (r (:pointer :short)))
+
 (defcfun "color_set" :int (pair :short) (opts (:pointer :void)))
-(defcfun "COLOR_PAIR" :int (n :int))
+
 (defcfun "copywin" :int (srcwin (:pointer window)) (dstwin (:pointer window)) (sminrow :int) (smincol :int) (dminrow :int) (dmincol :int) (dmaxrow :int) (dmaxcol :int) (overlay :int))
 (defcfun "curs_set" :int (visibility :int))
 (defcfun "def_prog_mode" :int)
@@ -52,7 +52,7 @@
 (defcfun "getstr" :int (str :string))
 (defcfun "getwin" (:pointer window) (filep file-ptr))
 (defcfun "halfdelay" :int (tenths :int))
-(defcfun "has_colors" :boolean)
+
 (defcfun "has_ic" :boolean)
 (defcfun "has_il" :boolean)
 (defcfun "hline" :int (ch chtype) (n :int))
@@ -63,8 +63,8 @@
 (defcfun "inchnstr" :int (inchstr (:pointer chtype)) (n :int))
 (defcfun "inchstr" :int (inchstr (:pointer chtype)))
 (defcfun "initscr" (:pointer window))
-(defcfun "init_color" :int (color :short) (r :short) (g :short) (b :short))
-(defcfun "init_pair" :int (pair :short) (f :short) (b :short))
+
+
 (defcfun "innstr" :int (str :string) (n :int))
 (defcfun "insch" :int (ch chtype))
 (defcfun "insdelln" :int (n :int))
@@ -144,7 +144,7 @@
 (defcfun "notimeout" :int (win (:pointer window)) (bf :boolean))
 (defcfun "overlay" :int (srcwin (:pointer window)) (dstwin (:pointer window)))
 (defcfun "overwrite" :int (srcwin (:pointer window)) (dstwin (:pointer window)))
-(defcfun "pair_content" :int (pair :short) (f (:pointer :short)))
+
 (defcfun "PAIR_NUMBER" :int (attrs :int))
 (defcfun "pechochar" :int (pad (:pointer window)) (ch chtype))
 (defcfun "pnoutrefresh" :int (pad (:pointer window)) (pminrow :int) (pmincol :int) (sminrow :int) (smincol :int) (smaxrow :int) (smaxcol :int))
@@ -188,7 +188,7 @@
 (defcfun "slk_touch" :int)
 (defcfun "standout" :int)
 (defcfun "standend" :int)
-(defcfun "start_color" :int)
+
 (defcfun "subpad" (:pointer window) (orig (:pointer window)) (nlines :int) (ncols :int) (begin_y :int) (begin_x :int))
 (defcfun "subwin" (:pointer window) (orig (:pointer window)) (nlines :int) (ncols :int) (begin_y :int) (begin_x :int))
 (defcfun "syncok" :int (win (:pointer window)) (bf :boolean))
@@ -271,17 +271,16 @@ extern NCURSES_EXPORT(const char *) curses_version (void);
 extern NCURSES_EXPORT(int) alloc_pair (int, int);
 extern NCURSES_EXPORT(int) assume_default_colors (int, int);
 extern NCURSES_EXPORT(int) define_key (const char *, int);
-extern NCURSES_EXPORT(int) extended_color_content(int, int *, int *, int *);
-extern NCURSES_EXPORT(int) extended_pair_content(int, int *, int *);
+
 extern NCURSES_EXPORT(int) extended_slk_color(int);
 extern NCURSES_EXPORT(int) find_pair (int, int);
 extern NCURSES_EXPORT(int) free_pair (int);
 extern NCURSES_EXPORT(int) get_escdelay (void);
-extern NCURSES_EXPORT(int) init_extended_color(int, int, int, int);
-extern NCURSES_EXPORT(int) init_extended_pair(int, int, int);
+
+
 extern NCURSES_EXPORT(int) key_defined (const char *);
 extern NCURSES_EXPORT(int) keyok (int, bool);
-extern NCURSES_EXPORT(void) reset_color_pairs (void);
+
 extern NCURSES_EXPORT(int) resize_term (int, int);
 extern NCURSES_EXPORT(int) resizeterm (int, int);
 extern NCURSES_EXPORT(int) set_escdelay (int);
@@ -318,3 +317,15 @@ extern NCURSES_EXPORT(void) nofilter(void);|#
 (defcfun "mouse_trafo" :boolean (pY (:pointer :int)) (pX (:pointer :int)) (to_screen :boolean))
 (defcfun "wmouse_trafo" :boolean (win (:pointer window)) (pY (:pointer :int)) (pX (:pointer :int)) (to_screen :boolean))
 (defcfun "mouseinterval" :int (erval :int))
+
+
+
+(defcfun "getattrs" :int (win (:pointer window)))
+(defcfun "getcurx" :int (win (:pointer window)))
+(defcfun "getcury" :int (win (:pointer window)))
+(defcfun "getbegx" :int (win (:pointer window)))
+(defcfun "getbegy" :int (win (:pointer window)))
+(defcfun "getmaxx" :int (win (:pointer window)))
+(defcfun "getmaxy" :int (win (:pointer window)))
+(defcfun "getparx" :int (win (:pointer window)))
+(defcfun "getpary" :int (win (:pointer window)))
