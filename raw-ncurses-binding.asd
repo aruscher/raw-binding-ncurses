@@ -1,7 +1,7 @@
-(asdf:defsystem #:raw-ncurses-binding
-  :description "Describe raw-ncurses-binding here"
-  :author "Your Name <your.name@example.com>"
-  :license  "Specify license here"
+(asdf:defsystem #:raw-binding-ncurses
+  :description ""
+  :author "Andreas Ruscheinski <andreas.ruscheinski@gmail.com>"
+  :license  "MIT"
   :version "0.0.1"
   :serial t
   :defsystem-depends-on ("cffi-grovel")
@@ -81,13 +81,13 @@
                (:file "window")
                (:file "wresize")))
 
-(asdf:defsystem #:raw-ncurses-binding/demo
-  :description "Describe raw-ncurses-binding here"
-  :author "Your Name <your.name@example.com>"
-  :license  "Specify license here"
+(asdf:defsystem #:raw-bindings-ncurses/demo
+  :description ""
+  :author "Andreas Ruscheinski <andreas.ruscheinski@gmail.com>"
+  :license  "MIT"
   :version "0.0.1"
   :serial t
-  :depends-on ("raw-ncurses-binding")
+  :depends-on ("raw-bindings-ncurses")
   :pathname "demo"
   :components (
                (:file "initialization")
