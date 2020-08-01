@@ -14,10 +14,10 @@
 
 (defcfun "cbreak" :int)
 
-(defcfun "clear" :int)
+
 (defcfun "clearok" :int (win (:pointer window)) (bf :boolean))
-(defcfun "clrtobot" :int)
-(defcfun "clrtoeol" :int)
+
+
 
 
 
@@ -35,7 +35,7 @@
 (defcfun "dupwin" (:pointer window) (win (:pointer window)))
 (defcfun "echo" :int)
 
-(defcfun "erase" :int)
+
 (defcfun "endwin" :int)
 (defcfun "erasechar" :char)
 (defcfun "filter" :void)
@@ -209,15 +209,15 @@
 
 
 
-(defcfun "wclear" :int (win (:pointer window)))
-(defcfun "wclrtobot" :int (win (:pointer window)))
-(defcfun "wclrtoeol" :int (win (:pointer window)))
+
+
+
 
 (defcfun "wcursyncup" :void (win (:pointer window)))
 (defcfun "wdelch" :int (win (:pointer window)))
 (defcfun "wdeleteln" :int (win (:pointer window)))
 
-(defcfun "werase" :int (win (:pointer window)))
+
 (defcfun "wgetch" :int (win (:pointer window)))
 (defcfun "wgetnstr" :int (win (:pointer window)) (str :string) (n :int))
 (defcfun "wgetstr" :int (win (:pointer window)) (str :string))

@@ -37,7 +37,7 @@ int wstandout(WINDOW *win);
 
 (defcfun "attr_get" :int
   (attrs (:pointer attr-t))
-  (pair (:pointer short))
+  (pair (:pointer :short))
   (opts :pointer))
 
 (defcfun "wattr_get" :int

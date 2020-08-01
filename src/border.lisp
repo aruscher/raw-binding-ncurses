@@ -25,7 +25,7 @@ int mvwvline(WINDOW *, int y, int x, chtype ch, int n);
   (bl chtype)
   (br chtype))
 
-(efcfun "wborder" :int
+(defcfun "wborder" :int
         (win (:pointer window))
         (ls chtype)
         (rs chtype)
