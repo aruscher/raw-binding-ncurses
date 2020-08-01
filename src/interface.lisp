@@ -26,7 +26,7 @@
 (defcfun "def_prog_mode" :int)
 (defcfun "def_shell_mode" :int)
 (defcfun "delay_output" :int (ms :int))
-(defcfun "delch" :int)
+
 ;;(defcfun "delscreen" :void (sp (:pointer screen)))
 (defcfun "delwin" (:pointer window) (win (:pointer window)))
 (defcfun "deleteln" :int)
@@ -85,7 +85,7 @@
 
 
 (defcfun "mvcur" :int (oldrow :int) (oldcol :int) (newrow :int) (newcol :int))
-(defcfun "mvdelch" :int (y :int) (x :int))
+
 (defcfun "mvderwin" :int (win (:pointer window)) (par_y :int) (par_x :int))
 (defcfun "mvgetch" :int (y :int) (x :int))
 (defcfun "mvgetnstr" :int (y :int) (x :int) (str :string) (n :int))
@@ -108,7 +108,7 @@
 
 
 
-(defcfun "mvwdelch" :int (win (:pointer window)) (y :int) (x :int))
+
 (defcfun "mvwgetch" :int (win (:pointer window)) (y :int) (x :int))
 (defcfun "mvwgetnstr" :int (win (:pointer window)) (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvwgetstr" :int (win (:pointer window)) (y :int) (x :int) (str :string))
@@ -214,7 +214,7 @@
 
 
 (defcfun "wcursyncup" :void (win (:pointer window)))
-(defcfun "wdelch" :int (win (:pointer window)))
+
 (defcfun "wdeleteln" :int (win (:pointer window)))
 
 
@@ -252,8 +252,8 @@ extern NCURSES_EXPORT(bool) is_term_resized (int, int);
 extern NCURSES_EXPORT(char *) keybound (int, int);
 extern NCURSES_EXPORT(const char *) curses_version (void);
 extern NCURSES_EXPORT(int) alloc_pair (int, int);
-extern NCURSES_EXPORT(int) assume_default_colors (int, int);
-extern NCURSES_EXPORT(int) define_key (const char *, int);
+
+
 
 extern NCURSES_EXPORT(int) extended_slk_color(int);
 extern NCURSES_EXPORT(int) find_pair (int, int);
@@ -268,7 +268,7 @@ extern NCURSES_EXPORT(int) resize_term (int, int);
 extern NCURSES_EXPORT(int) resizeterm (int, int);
 extern NCURSES_EXPORT(int) set_escdelay (int);
 extern NCURSES_EXPORT(int) set_tabsize (int);
-extern NCURSES_EXPORT(int) use_default_colors (void);
+
 extern NCURSES_EXPORT(int) use_extended_names (bool);
 extern NCURSES_EXPORT(int) use_legacy_coding (int);
 extern NCURSES_EXPORT(int) use_screen (SCREEN *, NCURSES_SCREEN_CB, void *);
