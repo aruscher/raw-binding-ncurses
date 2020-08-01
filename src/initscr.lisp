@@ -9,6 +9,8 @@ SCREEN *set_term(SCREEN *new);
 void delscreen(SCREEN* sp);
 |#
 
+(defcvar "stdscr" (:pointer window))
+
 (defcfun "initscr"
     (:pointer window))
 

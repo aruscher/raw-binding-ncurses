@@ -18,8 +18,8 @@ int flushinp(void);
 (defcfun "unctrl" :string
   (c chtype))
 
-(defcfun "wunctrl" (:pointer wchar-tt)
-  (c (:pointer cchar-t)))
+(defcfun "wunctrl" (:pointer wchar-t)
+  (c (:pointer (:struct cchar-t))))
 
 (defcfun "keyname" :string
   (c :int))

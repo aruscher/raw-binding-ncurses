@@ -13,6 +13,7 @@
                ;;
                (:file "load-library")
                (:file "types")
+               (:file "variables")
                (:file "addch")
                (:file "addchstr")
                (:file "addstr")
@@ -37,7 +38,7 @@
                (:file "getstr")
                (:file "get-wch")
                (:file "get-wstr")
-               (:file "getyx")
+               ;;(:cffi-wrapper-file "getyx-wrapper")
                (:file "inch")
                (:file "inchstr")
                (:file "initscr")
@@ -76,20 +77,19 @@
                (:file "termcap")
                (:file "terminfo")
                (:file "touch")
-
                (:file "util")
                (:file "window")
                (:file "wresize")))
 
-;; (asdf:defsystem #:raw-ncurses-binding/demo
-;;   :description "Describe raw-ncurses-binding here"
-;;   :author "Your Name <your.name@example.com>"
-;;   :license  "Specify license here"
-;;   :version "0.0.1"
-;;   :serial t
-;;   :depends-on ("raw-ncurses-binding")
-;;   :pathname "demo"
-;;   :components ((:file "package")
-;;                (:file "hello-world")
-;;                (:file "hello-world-color")
-;;                (:file "worms")))
+(asdf:defsystem #:raw-ncurses-binding/demo
+  :description "Describe raw-ncurses-binding here"
+  :author "Your Name <your.name@example.com>"
+  :license  "Specify license here"
+  :version "0.0.1"
+  :serial t
+  :depends-on ("raw-ncurses-binding")
+  :pathname "demo"
+  :components (
+               (:file "initialization")
+               (:file "output-functions")
+               (:file "input-functions")))

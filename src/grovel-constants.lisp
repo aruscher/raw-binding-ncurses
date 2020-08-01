@@ -7,6 +7,7 @@
 (constant (+NCURSES-VERSION-MINOR+ "NCURSES_VERSION_MINOR"))
 (constant (+NCURSES-VERSION-PATCH+ "NCURSES_VERSION_PATCH"))
 (constant (+NCURSES-WIDECHAR+ "NCURSES_WIDECHAR"))
+(constant (+NCURSES-VERSION+ "NCURSES_VERSION"))
 
 ;; X/OPEN Attributes
 (constant (+WA-ATTRIBUTES+ "WA_ATTRIBUTES"))
@@ -194,4 +195,4 @@
 (constant (+KEY-EVENT+ "KEY_EVENT"))
 (constant (+KEY-MAX+ "KEY_MAX"))
 
-
+(constant (+FOOO+ "WACS_BLOCK"))
