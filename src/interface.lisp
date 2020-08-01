@@ -12,7 +12,7 @@
 
 
 
-(defcfun "cbreak" :int)
+
 
 
 (defcfun "clearok" :int (win (:pointer window)) (bf :boolean))
@@ -27,26 +27,26 @@
 (defcfun "def_shell_mode" :int)
 (defcfun "delay_output" :int (ms :int))
 
-;;(defcfun "delscreen" :void (sp (:pointer screen)))
+
 (defcfun "delwin" (:pointer window) (win (:pointer window)))
-(defcfun "deleteln" :int)
+
 (defcfun "derwin" (:pointer window) (orig (:pointer window)) (nlines :int) (ncols :int) (begin_y :int) (begin_x :int))
 (defcfun "doupdate" :int)
 (defcfun "dupwin" (:pointer window) (win (:pointer window)))
-(defcfun "echo" :int)
 
 
-(defcfun "endwin" :int)
+
+
 (defcfun "erasechar" :char)
 (defcfun "filter" :void)
 
 (defcfun "flushnip" :int)
 
-(defcfun "getch" :int)
-(defcfun "getnstr" :int (str :string) (n :int))
-(defcfun "getstr" :int (str :string))
+
+
+
 (defcfun "getwin" (:pointer window) (filep file-ptr))
-(defcfun "halfdelay" :int (tenths :int))
+
 
 (defcfun "has_ic" :boolean)
 (defcfun "has_il" :boolean)
@@ -54,29 +54,29 @@
 (defcfun "idcok" :void (win (:pointer window)) (bf :boolean))
 (defcfun "idlok" :int (win (:pointer window)) (bf :boolean))
 (defcfun "immedok" :void (win (:pointer window)) (bf :boolean))
-(defcfun "inch" chtype)
-(defcfun "inchnstr" :int (inchstr (:pointer chtype)) (n :int))
-(defcfun "inchstr" :int (inchstr (:pointer chtype)))
-(defcfun "initscr" (:pointer window))
+
+
+
+
 
 
 (defcfun "innstr" :int (str :string) (n :int))
-(defcfun "insch" :int (ch chtype))
-(defcfun "insdelln" :int (n :int))
-(defcfun "insertln" :int)
+
+
+
 (defcfun "insnstr" :int (str :string) (n :int))
 (defcfun "insstr" :int (str :string))
 (defcfun "instr" :int (str :string))
-(defcfun "intrflush" :int (win (:pointer window)) (bf :boolean))
-(defcfun "isendwin" :bool)
+
+
 (defcfun "is_linetouched" :boolean (win (:pointer window)) (line :int))
 (defcfun "is_wintouched" :boolean (win (:pointer window)))
 (defcfun "keyname" :string (c :int))
-(defcfun "keypad" :int (win (:pointer window)) (bf :boolean))
+
 (defcfun "killchar" :char)
 (defcfun "leaveok" :int (win (:pointer window)) (bf :boolean))
 (defcfun "longname" :string)
-(defcfun "meta" :int (win (:pointer window)) (bf :boolean))
+
 (defcfun "move" :int (y :int) (x :int))
 
 
@@ -87,15 +87,14 @@
 (defcfun "mvcur" :int (oldrow :int) (oldcol :int) (newrow :int) (newcol :int))
 
 (defcfun "mvderwin" :int (win (:pointer window)) (par_y :int) (par_x :int))
-(defcfun "mvgetch" :int (y :int) (x :int))
-(defcfun "mvgetnstr" :int (y :int) (x :int) (str :string) (n :int))
-(defcfun "mvgetstr" :int (y :int) (x :int) (str :string))
 
-(defcfun "mvinch" chtype (y :int) (x :int))
-(defcfun "mvinchnstr" :int (y :int) (x :int) (chstr (:pointer chtype)) (n :int))
-(defcfun "mvinchstr" :int (y :int) (x :int) (chstr (:pointer chtype)))
+
+
+
+
+
 (defcfun "mvinnstr" :int (y :int) (x :int) (str :string) (n :int))
-(defcfun "mvinsch" :int (y :int) (x :int) (ch chtype))
+
 (defcfun "mvinsnstr" :int (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvinsstr" :int (y :int) (x :int) (str :string))
 (defcfun "mvinstr" :int (y :int) (x :int) (str :string))
@@ -109,16 +108,16 @@
 
 
 
-(defcfun "mvwgetch" :int (win (:pointer window)) (y :int) (x :int))
-(defcfun "mvwgetnstr" :int (win (:pointer window)) (y :int) (x :int) (str :string) (n :int))
-(defcfun "mvwgetstr" :int (win (:pointer window)) (y :int) (x :int) (str :string))
+
+
+
 
 (defcfun "mvwin" (:pointer window) (win (:pointer window)) (y :int) (x :int))
-(defcfun "mvwinch" chtype (win (:pointer window)) (y :int) (x :int))
-(defcfun "mvwinchnstr" :int (win (:pointer window)) (y :int) (x :int) (chstr (:pointer chtype) (n :int)))
-(defcfun "mvwinchstr" :int (win (:pointer window)) (y :int) (x :int) (chstr (:pointer chtype)))
+
+
+
 (defcfun "mvwinnstr" :int (win (:pointer window)) (y :int) (x :int) (str :string) (n :int))
-(defcfun "mvwinsch" :int (win (:pointer window)) (y :int) (x :int) (ch chtype))
+
 (defcfun "mvwinsnstr" :int (win (:pointer window)) (y :int) (x :int) (str :string) (n :int))
 (defcfun "mvwinsstr" :int (win (:pointer window)) (y :int) (x :int) (str :string))
 (defcfun "mvwinstr" :int (win (:pointer window)) (y :int) (x :int) (str :string))
@@ -127,16 +126,16 @@
 
 (defcfun "napms" :int (ms :int))
 (defcfun "newpad" (:pointer window) (nlines :int) (nclos :int))
-;;(defcfun "newterm" (:pointer screen) (type :string) (outfd file-ptr) (infd file-ptr))
+
 (defcfun "newwin" (:pointer window) (nlines :int) (ncols :int) (begin_y :int) (begin_x :int))
 (defcfun "nl" :int)
-(defcfun "nocbreak" :int)
-(defcfun "nodelay" :int (win (:pointer window)) (bf :boolean))
-(defcfun "noecho" :int)
+
+
+
 (defcfun "nonl" :int)
-(defcfun "noqiflush" :void)
-(defcfun "noraw" :int)
-(defcfun "notimeout" :int (win (:pointer window)) (bf :boolean))
+
+
+
 (defcfun "overlay" :int (srcwin (:pointer window)) (dstwin (:pointer window)))
 (defcfun "overwrite" :int (srcwin (:pointer window)) (dstwin (:pointer window)))
 
@@ -146,8 +145,8 @@
 (defcfun "prefresh" :int (pad (:pointer window)) (pminrow :int) (pmincol :int) (sminrow :int) (smincol :int) (smaxrow :int) (smaxcol :int))
 (defcfun "printw" :int (fmt :string) &rest)
 (defcfun "putwin" :int (win (:pointer window)) (filep file-ptr))
-(defcfun "qiflush" :void)
-(defcfun "raw" :int)
+
+
 (defcfun "redrawwin" :int (win (:pointer window)))
 (defcfun "refresh" :int)
 (defcfun "resetty" :int)
@@ -164,7 +163,7 @@
 (defcfun "scr_restore" :int (filename :string))
 (defcfun "scr_set" :int (filename :string))
 (defcfun "setscrreg" :int (top :int) (bot :int))
-;;(defcfun "set_term" (:pointer screen) (new (:pointer screen)))
+
 (defcfun "slk_attroff" :int (attrs chtype))
 (defcfun "slk_attr_off" :int (attrs attr-t) (opts :pointer))
 (defcfun "slk_attron" :int (attrs chtype))
@@ -187,11 +186,11 @@
 (defcfun "syncok" :int (win (:pointer window)) (bf :boolean))
 (defcfun "termattrs" chtype)
 (defcfun "termname" :string)
-(defcfun "timeout" :void (delay :int))
+
 (defcfun "touchline" :int (win (:pointer window)) (start :int) (count :int))
 (defcfun "touchwin" :int (win (:pointer window)))
-(defcfun "typeahead" :int (fd :int))
-(defcfun "ungetch" :int (ch :int))
+
+
 (defcfun "untouchwin" :int (win (:pointer window)))
 (defcfun "use_env" :void (f :boolean))
 (defcfun "use_tioctl" :void (f :boolean))
@@ -215,20 +214,20 @@
 
 (defcfun "wcursyncup" :void (win (:pointer window)))
 
-(defcfun "wdeleteln" :int (win (:pointer window)))
 
 
-(defcfun "wgetch" :int (win (:pointer window)))
-(defcfun "wgetnstr" :int (win (:pointer window)) (str :string) (n :int))
-(defcfun "wgetstr" :int (win (:pointer window)) (str :string))
 
-(defcfun "winch" chtype (win (:pointer window)))
-(defcfun "winchnstr" :int (win (:pointer window)) (chstr (:pointer chtype)) (n :int))
-(defcfun "winchstr" :int (win (:pointer window)) (chstr (:pointer chtype)))
+
+
+
+
+
+
+
 (defcfun "winnstr" :int (win (:pointer window)) (str :string) (n :int))
-(defcfun "winsch" :int (win (:pointer window)) (ch chtype))
-(defcfun "winsdelln" :int (win (:pointer window)) (n :int))
-(defcfun "winsertln" :int (win (:pointer window)))
+
+
+
 (defcfun "winsnstr" :int (win (:pointer window)) (str :string) (n :int))
 (defcfun "winsstr" :int (win (:pointer window)) (str :string))
 (defcfun "winstr" :int (win (:pointer window)) (str :string))
@@ -243,14 +242,14 @@
 
 (defcfun "wsyncdown" :void (win (:pointer window)))
 (defcfun "wsyncup" :void (win (:pointer window)))
-(defcfun "wtimeout" :void (win (:pointer window)) (delay :int))
+
 (defcfun "wtouchln" :int (win (:pointer window)) (y :int) (n :int) (changed :int))
 
 
 #|
 extern NCURSES_EXPORT(bool) is_term_resized (int, int);
 extern NCURSES_EXPORT(char *) keybound (int, int);
-extern NCURSES_EXPORT(const char *) curses_version (void);
+
 extern NCURSES_EXPORT(int) alloc_pair (int, int);
 
 
@@ -269,7 +268,7 @@ extern NCURSES_EXPORT(int) resizeterm (int, int);
 extern NCURSES_EXPORT(int) set_escdelay (int);
 extern NCURSES_EXPORT(int) set_tabsize (int);
 
-extern NCURSES_EXPORT(int) use_extended_names (bool);
+
 extern NCURSES_EXPORT(int) use_legacy_coding (int);
 extern NCURSES_EXPORT(int) use_screen (SCREEN *, NCURSES_SCREEN_CB, void *);
 extern NCURSES_EXPORT(int) use_window (WINDOW *, NCURSES_WINDOW_CB, void *);
