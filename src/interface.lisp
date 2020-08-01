@@ -39,7 +39,7 @@
 (defcfun "doupdate" :int)
 (defcfun "dupwin" (:pointer window) (win (:pointer window)))
 (defcfun "echo" :int)
-(defcfun "echochar" :int (ch chtype))
+
 (defcfun "erase" :int)
 (defcfun "endwin" :int)
 (defcfun "erasechar" :char)
@@ -83,7 +83,7 @@
 (defcfun "longname" :string)
 (defcfun "meta" :int (win (:pointer window)) (bf :boolean))
 (defcfun "move" :int (y :int) (x :int))
-(defcfun "mvaddch" :int (y :int) (x :int) (ch chtype))
+
 (defcfun "mvaddchnstr" :int (y :int) (x :int) (chstr (:pointer chtype) (n :int)))
 (defcfun "mvaddchstr" :int (y :int) (x :int) (chstr (:pointer chtype)))
 (defcfun "mvaddnstr" :int (y :int) (x :int) (str :string) (n :int))
@@ -107,7 +107,7 @@
 (defcfun "mvprintw" :int (y :int) (x :int) (fmt :string) &rest)
 (defcfun "mvscanw" :int (y :int) (x :int) (fmt string) &rest)
 (defcfun "mvvline" :int (y :int) (x :int) (ch chtype) (n :int))
-(defcfun "mvwaddch" :int (win (:pointer window)) (y :int) (x :int) (ch chtype))
+
 (defcfun "mvwaddchnstr" :int (win (:pointer window)) (y :int) (x :int) (chstr (:pointer chtype)) (n :int))
 (defcfun "mvwaddchstr" :int (win (:pointer window)) (y :int) (x :int) (chstr (:pointer chtype)))
 (defcfun "mvwaddnstr" :int (win (:pointer window)) (y :int) (x :int) (str :string) (n :int))
@@ -209,7 +209,7 @@
 ;(defcfun "vw_printw" :int (win (:pointer window)) (fmt :string) (varglist va_list))
 ;(defcfun "vwscanw" :int (win (:pointer window)) (fmt :string) (varglist va_list))
 ;(defcfun "vw_scanw" :int (win (:pointer window)) (fmt :string) (varglist va_list))
-(defcfun "waddch" :int (win (:pointer window)) (ch chtype))
+
 (defcfun "waddchnstr" :int (win (:pointer window)) (chstr (:pointer chtype) (n :int)))
 (defcfun "waddchstr" :int (win (:pointer window)) (chstr (:pointer chtype)))
 (defcfun "waddnstr" :int (win (:pointer window)) (str :string) (n :int))
@@ -232,7 +232,7 @@
 (defcfun "wcursyncup" :void (win (:pointer window)))
 (defcfun "wdelch" :int (win (:pointer window)))
 (defcfun "wdeleteln" :int (win (:pointer window)))
-(defcfun "wechochar" :int (win (:pointer window)) (ch chtype))
+
 (defcfun "werase" :int (win (:pointer window)))
 (defcfun "wgetch" :int (win (:pointer window)))
 (defcfun "wgetnstr" :int (win (:pointer window)) (str :string) (n :int))
