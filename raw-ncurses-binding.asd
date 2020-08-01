@@ -76,7 +76,7 @@
                (:file "termcap")
                (:file "terminfo")
                (:file "touch")
-               (:file "trace")
+
                (:file "util")
                (:file "window")
                (:file "wresize")))
