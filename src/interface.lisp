@@ -1,15 +1,9 @@
 (in-package #:binding)
 
 
-(defcfun "addnstr" :int (str :string) (n :int))
-(defcfun "addstr" :int (str :string))
-(defcfun "attroff" :int (attrs :int))
-(defcfun "attron" :int (attrs :int))
-(defcfun "attrset" :int (attrs :int))
-(defcfun "attr_get" :int (attrs (:pointer attr-t) (pair (:pointer short) (opts :pointer))))
-(defcfun "attr_off" :int (attrs attr-t) (opts :pointer))
-(defcfun "attr_on" :int (attrs attr-t) (opts :pointer))
-(defcfun "attr_set" :int (attrs attr-t) (pair :short) (opts :pointer))
+
+
+
 (defcfun "baudrate" :int)
 (defcfun "beep" :int)
 (defcfun "bkgd" :int (ch chtype))
@@ -18,13 +12,13 @@
 (defcfun "box" :int (win (:pointer window)) (verch chtype) (horch chtype))
 
 (defcfun "cbreak" :int)
-(defcfun "chgat" :int (n :int) (attr attr-t) (pair :short) (opts :pointer))
+
 (defcfun "clear" :int)
 (defcfun "clearok" :int (win (:pointer window)) (bf :boolean))
 (defcfun "clrtobot" :int)
 (defcfun "clrtoeol" :int)
 
-(defcfun "color_set" :int (pair :short) (opts (:pointer :void)))
+
 
 (defcfun "copywin" :int (srcwin (:pointer window)) (dstwin (:pointer window)) (sminrow :int) (smincol :int) (dminrow :int) (dmincol :int) (dmaxrow :int) (dmaxcol :int) (overlay :int))
 (defcfun "curs_set" :int (visibility :int))
@@ -86,9 +80,9 @@
 
 
 
-(defcfun "mvaddnstr" :int (y :int) (x :int) (str :string) (n :int))
-(defcfun "mvaddstr" :int (y :int) (x :int) (str :string))
-(defcfun "mvchgat" :int (y :int (x :int) (n :int) (attr attr-t) (pair :short) (opts :pointer)))
+
+
+
 (defcfun "mvcur" :int (oldrow :int) (oldcol :int) (newrow :int) (newcol :int))
 (defcfun "mvdelch" :int (y :int) (x :int))
 (defcfun "mvderwin" :int (win (:pointer window)) (par_y :int) (par_x :int))
@@ -110,9 +104,9 @@
 
 
 
-(defcfun "mvwaddnstr" :int (win (:pointer window)) (y :int) (x :int) (str :string) (n :int))
-(defcfun "mvwaddstr" :int (win (:pointer window)) (y :int) (x :int) (str :string))
-(defcfun "mvwchgat" :int (win (:pointer window)) (y :int) (x :int) (n :int) (attr attr-t) (pair :short) (opts :pointer))
+
+
+
 (defcfun "mvwdelch" :int (win (:pointer window)) (y :int) (x :int))
 (defcfun "mvwgetch" :int (win (:pointer window)) (y :int) (x :int))
 (defcfun "mvwgetnstr" :int (win (:pointer window)) (y :int) (x :int) (str :string) (n :int))
@@ -186,8 +180,6 @@
 (defcfun "slk_restore" :int)
 (defcfun "slk_set" :int (labnum :int) (label :string) (fmt :int))
 (defcfun "slk_touch" :int)
-(defcfun "standout" :int)
-(defcfun "standend" :int)
 
 (defcfun "subpad" (:pointer window) (orig (:pointer window)) (nlines :int) (ncols :int) (begin_y :int) (begin_x :int))
 (defcfun "subwin" (:pointer window) (orig (:pointer window)) (nlines :int) (ncols :int) (begin_y :int) (begin_x :int))
@@ -212,23 +204,14 @@
 
 
 
-(defcfun "waddnstr" :int (win (:pointer window)) (str :string) (n :int))
-(defcfun "waddstr" :int (win (:pointer window)) (str :string))
-(defcfun "wattron" :int (win (:pointer window)) (attrs :int))
-(defcfun "wattroff" :int (win (:pointer window)) (attrs :int))
-(defcfun "wattrset" :int (win (:pointer window)) (attrs :int))
-(defcfun "wattr_get" :int (win (:pointer window)) (attrs (:pointer attr-t) (pair (:pointer :short) (opts :pointer))))
-(defcfun "wattr_on" :int (win (:pointer window)) (attrs attr-t) (opts :pointer))
-(defcfun "wattr_off" :int (win (:pointer window)) (attrs attr-t) (opts :pointer))
-(defcfun "wattr_set" :int (win (:pointer window)) (attrs attr-t) (pair :short) (opts :pointer))
 (defcfun "wbkgd" :int (win (:pointer window)) (ch chtype))
 (defcfun "wbkgdset" :void (win (:pointer window)) (ch chtype))
 (defcfun "wborder" :int (win (:pointer window)) (ls chtype) (rs chtype) (ts chtype) (bs chtype) (tl chtype) (tr chtype) (bl chtype) (br chtype))
-(defcfun "wchgat" :int (win (:pointer window)) (n :int) (attr attr-t) (pair :short) (opts :pointer))
+
 (defcfun "wclear" :int (win (:pointer window)))
 (defcfun "wclrtobot" :int (win (:pointer window)))
 (defcfun "wclrtoeol" :int (win (:pointer window)))
-(defcfun "wcolor_set" :int (win (:pointer window)) (pair :short) (opts (:pointer :void)))
+
 (defcfun "wcursyncup" :void (win (:pointer window)))
 (defcfun "wdelch" :int (win (:pointer window)))
 (defcfun "wdeleteln" :int (win (:pointer window)))
@@ -256,8 +239,7 @@
 (defcfun "wscanw" :int (win (:pointer window)) (fmt :string) &rest)
 (defcfun "wscrl" :int (win (:pointer window)) (n :int))
 (defcfun "wsetscrreg" :int (win (:pointer window)) (top :int) (bot :int))
-(defcfun "wstandout" :int (win (:pointer window)))
-(defcfun "wstandend" :int (win (:pointer window)))
+
 (defcfun "wsyncdown" :void (win (:pointer window)))
 (defcfun "wsyncup" :void (win (:pointer window)))
 (defcfun "wtimeout" :void (win (:pointer window)) (delay :int))
