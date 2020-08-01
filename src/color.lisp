@@ -1,5 +1,31 @@
 (in-package #:binding)
 
+#|
+#include <curses.h>
+
+int start_color(void);
+
+bool has_colors(void);
+bool can_change_color(void);
+
+int init_pair(short pair, short f, short b);
+int init_color(short color, short r, short g, short b);
+/* extensions */
+int init_extended_pair(int pair, int f, int b);
+int init_extended_color(int color, int r, int g, int b);
+
+int color_content(short color, short *r, short *g, short *b);
+int pair_content(short pair, short *f, short *b);
+/* extensions */
+int extended_color_content(int color, int *r, int *g, int *b);
+int extended_pair_content(int pair, int *f, int *b);
+
+/* extensions */
+void reset_color_pairs(void);
+
+int COLOR_PAIR(int n);
+PAIR_NUMBER(attrs);
+|#
 
 ;;TODO: Docstrings
 (defcfun "start_color" :int)
