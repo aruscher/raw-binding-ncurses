@@ -83,13 +83,3 @@ PAIR_NUMBER(attrs);
   (n :int))
 
 ;; TODO: PAIR_NUMBER(attrs);
-
-;; colors
-(defconstant +color-black+ 0)
-(defconstant +color-red+ 1)
-(defconstant +color-green+ 2)
-(defconstant +color-yellow+ 3)
-(defconstant +color-blue+ 4)
-(defconstant +color-magenta+ 5)
-(defconstant +color-cyan+ 6)
-(defconstant +color-white+ 7)

@@ -195,4 +195,11 @@
 (constant (+KEY-EVENT+ "KEY_EVENT"))
 (constant (+KEY-MAX+ "KEY_MAX"))
 
-(constant (+FOOO+ "WACS_BLOCK"))
+(constant (+COLOR-BLACK+ "COLOR_BLACK"))
+(constant (+COLOR-RED+ "COLOR_RED"))
+(constant (+COLOR-GREEN+ "COLOR_GREEN"))
+(constant (+COLOR-YELLOW+ "COLOR_YELLOW"))
+(constant (+COLOR-BLUE+ "COLOR_BLUE"))
+(constant (+COLOR-MAGENTA+ "COLOR_MAGENTA"))
+(constant (+COLOR-CYAN+ "COLOR_CYAN"))
+(constant (+COLOR-WHITE+ "COLOR_WHITE"))

@@ -41,8 +41,9 @@ int flushinp(void);
   (win (:pointer window))
   (filep file-ptr))
 
+;; TODO filepointer
 (defcfun "getwin" (:pointer window)
-  (filep :pointer)) ;; TODO filepointer
+  (filep :pointer)) 
 
 (defcfun "delay_output" :int (ms :int))
 
