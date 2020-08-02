@@ -3,9 +3,7 @@
 ;; TODO:
 ;; - FILE
 
-(include "ncurses.h"
-         "stddef.h"
-         "stdarg.h")
+(include "ncurses.h" "stddef.h" "stdarg.h")
 
 (ctype chtype "chtype")
 (ctype mmask-t "mmask_t")

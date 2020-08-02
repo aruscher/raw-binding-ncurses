@@ -20,6 +20,7 @@
   (pad-bottom ncurses-size-t)
   (pad-right ncurses-size-t))
 
+;; TODO: struct ldat *_line;	/* the actual line data */
 (defcstruct win-st
   (cury ncurses-size-t)
   (curx ncurses-size-t)
@@ -35,7 +36,7 @@
   (sync :boolean)
   (use-keypad :boolean)
   (delay :int)
-  (line :pointer) ;; TODO: struct ldat *_line;	/* the actual line data */
+  (line :pointer) 
   (regtop ncurses-size-t)
   (regbottom ncurses-size-t)
   (parx :int)
@@ -46,7 +47,6 @@
   (bkgrnd (:struct cchar-t ))
   (color :int))
 
-#|typedef struct _win_st WINDOW;|#
 (defctype window (:struct win-st))
 
 ;; ------------------------------

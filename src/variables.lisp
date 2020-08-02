@@ -13,9 +13,9 @@ NCURSES_WRAPPED_VAR(int, LINES);
 NCURSES_WRAPPED_VAR(int, TABSIZE);
 |#
 
-(defcvar "curscr" (:pointer (:struct window)))
-(defcvar "newscr" (:pointer (:struct window)))
-(defcvar "stdscr" (:pointer (:struct window)))
+(defcvar "curscr" (:pointer window))
+(defcvar "newscr" (:pointer window))
+(defcvar "stdscr" (:pointer window))
 (defcvar "ttytype" :string)
 (defcvar "COLORS" :int)
 (defcvar "COLORS_PAIRS" :int)
