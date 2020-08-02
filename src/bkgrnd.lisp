@@ -9,23 +9,23 @@ int getbkgrnd(cchar_t *wch);
 int wgetbkgrnd(WINDOW *win, cchar_t *wch);
 |#
 
-(defcfun bkgrnd :int
+(defcfun "bkgrnd" :int
   (wch (:pointer (:struct cchar-t))))
 
-(defcfun wbkgrnd :int
+(defcfun "wbkgrnd" :int
   (win (:pointer window))
   (wch (:pointer (:struct cchar-t))))
 
-(defcfun bkgrndset :int
+(defcfun "bkgrndset" :int
   (wch (:pointer (:struct cchar-t))))
 
-(defcfun wbkgrndset :int
+(defcfun "wbkgrndset" :int
   (win (:pointer window))
   (wch (:pointer (:struct cchar-t))))
 
-(defcfun getbkgrnd :int
+(defcfun "getbkgrnd" :int
   (wch (:pointer (:struct cchar-t))))
 
-(defcfun wgetbkgrndt :int
+(defcfun "wgetbkgrndt" :int
   (win (:pointer window))
   (wch (:pointer (:struct cchar-t))))
