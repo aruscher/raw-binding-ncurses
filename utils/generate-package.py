@@ -31,8 +31,6 @@ def merge_lines(lines):
     return []
 
 def extract_package_symbol(definition):
-    if "cchar-t" in definition:
-        print("here")
     if "(defcfun" in definition:
         name = re.search("\"(.*)\"", definition).group(1).replace("_","-")
         return f"#:{name}"
@@ -43,7 +41,7 @@ def extract_package_symbol(definition):
         name = re.search("\+(.*)\+", definition).group(1).replace("_","-")
         return f"#:+{name}+" 
     if "(ctype" in definition or "(defctype" in definition:
-        name = re.search("\s(.*)\s", definition).group(1).replace("_","-")
+        name = re.search("\s(\S*)\s", definition).group(1).replace("_","-")
         return f"#:{name}"
     if "(defcstruct" in definition:
         name = re.search("\s(\S*)\s.*", definition).group(1).replace("_","-")
